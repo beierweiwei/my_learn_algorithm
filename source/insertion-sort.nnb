@@ -10,38 +10,16 @@
         {
             "language": "typescript",
             "source": [
-                "function insertionSort (arr) {\r\n    for (let i = 1; i < arr.length; i++) {\r\n        let v = arr[i]\r\n        let j = i - 1\r\n        while (j >= 0 && v < arr[j]) {\r\n            arr[j + 1] = arr[j]\r\n            j--\r\n           \r\n        }\r\n        arr[j + 1] = v\r\n        \r\n    }\r\n    return arr\r\n}\r\n\r\nlet arr = [5, 2, 7, 10, 1, 22]\r\n\r\ninsertionSort(arr)"
+                "function insertionSort (arr) {\r\n    for (let i = 1; i < arr.length; i++) {\r\n        let v = arr[i]\r\n        // arr[0...j] 是已经排过序的拿在手上的牌,\r\n        let j = i - 1\r\n        // j指针从右往左对比刚起上的牌, \r\n        while (j >= 0 && v < arr[j]) {\r\n            // 如果手上牌小于j指针上的牌, 将这张牌往右移动一个位置\r\n            arr[j + 1] = arr[j]\r\n            j--\r\n        }\r\n        // 循环完后, j + 1的位置就是空出来的位置,将刚上手的牌插入到这个位置\r\n        arr[j + 1] = v\r\n        \r\n    }\r\n    return arr\r\n}\r\n\r\nlet arr = [5, 2, 7, 10, 1, 22]\r\n\r\ninsertionSort(arr)"
             ],
-            "outputs": [
-                {
-                    "items": [
-                        {
-                            "mime": "application/vnd.code.notebook.stdout",
-                            "value": [
-                                "",
-                                ""
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "items": [
-                        {
-                            "mime": "text/plain",
-                            "value": [
-                                "[",
-                                "  \u001b[33m1\u001b[39m,",
-                                "  \u001b[33m2\u001b[39m,",
-                                "  \u001b[33m5\u001b[39m,",
-                                "  \u001b[33m7\u001b[39m,",
-                                "  \u001b[33m10\u001b[39m,",
-                                "  \u001b[33m22\u001b[39m",
-                                "]"
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "此算法需要理解\r\n- 数组`arr`就是我们起起来的所有牌\r\n- 从第二张起, 依次将每张牌插入左边牌好的牌堆种\r\n- 如果手牌(需要排序的某张牌)比左边的牌大, 需要继续向左进行对比\r\n- 这里 `j >= 0 && v < arr[j]`的循环条件需要注意, 控制指针`j`的边界\r\n- `arr[j + 1] = v`, j + 1, 因为上一步的循环结束后, `j--` 了, 所以这里需要在将其移到正确的位置"
+            ],
+            "outputs": []
         }
     ]
 }
