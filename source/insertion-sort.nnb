@@ -1,0 +1,47 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "## 插入排序"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function insertionSort (arr) {\r\n    for (let i = 1; i < arr.length; i++) {\r\n        let v = arr[i]\r\n        let j = i - 1\r\n        while (j >= 0 && v < arr[j]) {\r\n            arr[j + 1] = arr[j]\r\n            j--\r\n           \r\n        }\r\n        arr[j + 1] = v\r\n        \r\n    }\r\n    return arr\r\n}\r\n\r\nlet arr = [5, 2, 7, 10, 1, 22]\r\n\r\ninsertionSort(arr)"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "[",
+                                "  \u001b[33m1\u001b[39m,",
+                                "  \u001b[33m2\u001b[39m,",
+                                "  \u001b[33m5\u001b[39m,",
+                                "  \u001b[33m7\u001b[39m,",
+                                "  \u001b[33m10\u001b[39m,",
+                                "  \u001b[33m22\u001b[39m",
+                                "]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
