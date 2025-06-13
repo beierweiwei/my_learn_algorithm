@@ -1,0 +1,54 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "## 合并排序\r\n\r\n- 分解: 将问题自上而下递归地分解为多个与原问题结构相同的子问题\r\n- 解决: 递归的将分解问题, 直到问题足够小,则直接返回值\r\n- 合并: 将分解后的问题的值,自下而上合并成总问的值"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function mergSort (arr) {\r\n    // 将一个arr一直分解, 分解到只有包含两个数时, 直接对两个数进行排序, 并返回\r\n    // 递归函数, 关键参数\r\n    //   1. arr,\r\n    //   2. 左边界指针\r\n    //   3. 中指针, 可以通过左右指针计算出来, 可省略\r\n    //   4. 右边界指针\r\n    // 递归函数的停止条件\r\n    // 左指针\r\n    return decompose(arr, 0, arr.length - 1)\r\n}\r\nfunction decompose (arr, left, right) {\r\n    if (left === right) {\r\n        return [arr[left]]\r\n    }\r\n    let mid = left + global.Math.floor((right - left) / 2) \r\n    if (left < mid) {\r\n        return merge(decompose(arr, left, mid), decompose(arr, mid+1, right), right - left + 1)\r\n        \r\n    } else {\r\n        if (arr[left] > arr[right]) {\r\n            let temp = left\r\n            left = right\r\n            right = temp\r\n        } \r\n        return [arr[left], arr[right]]\r\n      \r\n    }\r\n}\r\nfunction merge (arr1, arr2, length) {\r\n    let _left = 0, _right = 0\r\n    let res  = []\r\n    arr1.push(Infinity)\r\n    arr2.push(Infinity)\r\n    let i = 0\r\n    while (i < length) {\r\n        if (arr1[_left] < arr2[_right]) {\r\n            res.push(arr1[_left])\r\n            _left++\r\n        } else {\r\n            res.push(arr2[_right])\r\n            _right ++\r\n        }\r\n        i++\r\n    }\r\n    return res\r\n    \r\n}\r\n// let arr = Array(100).fill(0).map(() => global.Math.floor(global.Math.random() * 10))\r\nlet arr = [3, 5, 2, 10, 101, 1, 88, 123, 12]\r\nconsole.log(arr)\r\n\r\nlet res = mergSort(arr)\r\nreturn res\r\n"
+            ],
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "[",
+                                "  3,  5,   2, 10, 101,",
+                                "  1, 88, 123, 12",
+                                "]",
+                                "",
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "items": [
+                        {
+                            "mime": "text/plain",
+                            "value": [
+                                "[",
+                                "  \u001b[33m1\u001b[39m,",
+                                "  \u001b[33m2\u001b[39m,",
+                                "  \u001b[33m3\u001b[39m,",
+                                "  \u001b[33m5\u001b[39m,",
+                                "  \u001b[33m10\u001b[39m,",
+                                "  \u001b[33m12\u001b[39m,",
+                                "  \u001b[33m88\u001b[39m,",
+                                "  \u001b[33m101\u001b[39m,",
+                                "  \u001b[33m123\u001b[39m",
+                                "]"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
